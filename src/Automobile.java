@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 public class Automobile {
     private String maker;
     private String model;
@@ -57,9 +59,16 @@ public class Automobile {
     }
 
     public String toString() {
+        String carPrice = String.format("%.2f", getPrice());
+
+        NumberFormat format = NumberFormat.getCurrencyInstance();
+        String currency = format.format(getPrice());
+
+
         String retval = "Maker: " + getMaker() + "\nModel: " + getModel()
                         + "\nYear: " + getYear() + "\nQty: " + getQty()
-                        + "\nPrice: $ " + getPrice() + "\n";
+                        +"\nCurrency: " + currency
+                        + "\nPrice: $ " + carPrice + "\n";
 
         return retval;
     }
